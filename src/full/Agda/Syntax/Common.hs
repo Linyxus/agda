@@ -1258,7 +1258,7 @@ data Annotation = Annotation
     -- ^ When this annotation appears in the Arg of a pi-type, its
     -- elements should be compared for definitional equality by
     -- tabulating the domain. Only supported when the domain is
-    -- @IsOne φ@.
+    -- @IsOne phi@.
   } deriving (Data, Eq, Ord, Show, Generic)
 
 instance HasRange Annotation where
