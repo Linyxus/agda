@@ -31,6 +31,7 @@ import Agda.TypeChecking.Monad.Debug
 import Agda.TypeChecking.Substitute
 import Agda.TypeChecking.Monad.Open
 import Agda.TypeChecking.Monad.State
+import {-# SOURCE #-} Agda.TypeChecking.Monad.Boundary
 
 import Agda.Utils.Function
 import Agda.Utils.Functor
@@ -118,6 +119,7 @@ checkpoint sub k = do
     { envCurrentCheckpoint = chkpt
     , envCheckpoints       = Map.insert chkpt IdS $
                               fmap (applySubst sub) (envCheckpoints env)
+    , envBoundary          = applySubst sub (envBoundary env)
     }
   newMods <- useTC stModuleCheckpoints
   -- Set the checkpoint for introduced modules to the old checkpoint when the
